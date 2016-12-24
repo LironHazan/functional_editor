@@ -1,0 +1,72 @@
+body {
+  padding: 0;
+}
+
+.fne-menu{
+  padding-left: 15px;
+  margin-top: -20px;
+}
+.fne-dropdown{
+  padding: 10px;
+}
+
+.btn-default{
+  border: 2px solid #a1a1a1;
+  border-radius: 2px;
+}
+.fne-btn{
+  text-transform: uppercase;
+}
+
+.fne-name{
+  padding: 10px ;
+}
+.nfe-modal{
+  width:200px;
+}
+.fne-modal-input{
+  display: inline-flex;
+  height: 32px;
+}
+
+#fne-modal-btn {
+  padding: 5px;
+}
+#fne-modal-text-field{
+  margin-right: 5px;
+  border-radius: 3px;
+}
+#fne-modal-title{
+  text-transform: uppercase;
+}
+.ace_editor { height: 200px; }
+
+.header,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="nfe-modal">
+    <div class="modal-header">
+        <span class="icon-closed close" ng-click="$dismiss()"></span>
+        <h3 id="fne-modal-title" class="modal-title">Set name</h3>
+    </div>
+    <div class="modal-body">
+        <div id="modal-custom-input">
+            <div class="fne-modal-input">
+                <input id="fne-modal-text-field" type="text" ng-model="$ctrl.item.name" class="input-line" required/>
+                <button id="fne-modal-btn" class="btn btn-primary" ng-click="$ctrl.ok()" ng-disabled="!$ctrl.item.name">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
