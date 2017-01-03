@@ -4,15 +4,13 @@
 
     <label>{{funcName}}</label>
 <div>
-
-    <button class="btn-default" ng-click="saveFunction(funcObj)"><div class="fne-btn"><i class="fa fa-floppy-o" aria-hidden="true"></i> save</div></button>
-    <button class="btn-default" ng-click="deployFunction()"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true"></i> deploy </div></button>
-    <button class="btn-default" ng-click="newFunction()"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true"></i> new </div></button>
-    <button class="btn-default" ng-click="clearEditor()"> <div class="fne-btn"> <i class="fa fa-trash-o" aria-hidden="true"></i> clear editor </div></button>
+    <button class="btn-default" ng-click="newFunction()"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true"></i></div></button>
+    <button class="btn-default" ng-disabled="!hasName" ng-click="deployFunction(funcObj)"> <div class="fne-btn"> <i class="fa fa-play" aria-hidden="true"></i></div></button>
+    <button class="btn-default" ng-click="clearEditor()"> <div class="fne-btn"> <i class="fa fa-trash-o" aria-hidden="true"></i></div></button>
 </div>
 <div class="fne-dropdown">
     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Functions
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{funcName}}
             <span class="caret"></span></button>
         <ul class="dropdown-menu">
             <li ng-repeat="func in functions" ng-click="selectFunction(func)">

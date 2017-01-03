@@ -5,8 +5,10 @@ angular.module('functional_editor')
 
         const functions = [];
 
-        this.validateSyntax = () => {
-            return true;
+        // ^((def|function).([a-z1-9A-Z_]*)(\(([a-z1-9A-Z_]*)\,.([a-z1-9A-Z_]*)\)))
+        this.validateSyntax = (fnText) => {
+            const re = /^((def|function).([a-z1-9A-Z_]*|[a-z1-9A-Z_]*\s)(\((args)\,.(context)\)))/;
+            return re.test(fnText);
         };
 
         this.getListOfFunctions = () => {
@@ -14,17 +16,19 @@ angular.module('functional_editor')
         };
 
         this.save = function(funcObj){ // non arrow func since I'm using 'this' as editorService ...
-            if(this.validateSyntax()){
                 functions.push(funcObj);
-            }
         };
 
         this.deploy = (name, data) => {
-            return $http.put('/api/deployments/list' + name, data);
+            return $http({
+                method: 'POST',
+                url: '/api/deployments/deploy/',
+                data: {name: name, lang: 'python', func: encodeURIComponent(data)}
+            });
         };
 
         this.getUploadedFunctions = () => {
-            return $http.get('/api/deployments/deploy');
+            return $http.get('/api/deployments/list');
         };
 
         // options - predefined configurable preferences

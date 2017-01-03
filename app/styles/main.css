@@ -2,6 +2,10 @@ body {
   padding: 0;
 }
 
+.modal-content {
+  width: 256px;
+  margin: 1px 0 0 -65px;
+}
 .fne-menu{
   padding-left: 15px;
   margin-top: -20px;

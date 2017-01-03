@@ -7,3 +7,5 @@ bower_components
 app/-compiled
 app/feditor/dev
 test
+app/images/
+server/conf.js

@@ -4,13 +4,12 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-//const config = require('./conf');
 
 const deployments = require('./rpc');
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('cookie-session')({
     secret: 'secret',
@@ -19,7 +18,7 @@ app.use(require('cookie-session')({
 
 const router = express.Router();
 router.use('/deployments', deployments.controller);
-app.use('/api',router); // all routes goes throw \backend
+app.use('/api',router);
 
 app.use(express.static(path.join(__dirname, '..')));
 //app.use(express.static(path.join(__dirname, '..', '.tmp')));
@@ -32,11 +31,6 @@ app.use((req, res, next) => {
     err.status = 404;
     next(err);
 });
-
-// error handlers
-
-// development error handler
-// will print stacktrace
 
 if (app.get('env') === 'development') {
     app.use((err, req, res/*, next*/) => {
@@ -58,9 +52,5 @@ app.use((err, req, res/*, next*/) => {
     });
 });
 
-// general errors will be caught here
-process.on('uncaughtException', (err) => {
-    console.error('Caught exception: ' + err);
-});
 
 module.exports = app;
