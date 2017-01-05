@@ -48,7 +48,8 @@ angular.module('functional_editor')
       };
 
       $scope.newFunction = () => {
-          $scope.clearEditor();
+          const text = 'def main(args, context)';
+          editorService.initFunction(editor, text);
           const modalInstance = $uibModal.open({
               animation: $ctrl.animationsEnabled,
               component: 'modalComponent'

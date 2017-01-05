@@ -1,18 +1,15 @@
 <settings-component></settings-component>
 
 <div class="fne-menu">
-
-    <label>{{funcName}}</label>
 <div>
     <button class="btn-default" ng-click="newFunction()"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true"></i></div></button>
     <button class="btn-default" ng-disabled="!hasName" ng-click="deployFunction(funcObj)"> <div class="fne-btn"> <i class="fa fa-play" aria-hidden="true"></i></div></button>
+    <label>{{funcName}}</label>
     <button class="btn-default" ng-click="clearEditor()"> <div class="fne-btn"> <i class="fa fa-trash-o" aria-hidden="true"></i></div></button>
 </div>
 <div class="fne-dropdown">
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{funcName}}
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+    <div >
+        <ul>
             <li ng-repeat="func in functions" ng-click="selectFunction(func)">
                 <span class="fne-name"> {{func.name}} </span>
             </li>
