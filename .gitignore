@@ -5,7 +5,7 @@ dist
 .sass-cache
 bower_components
 app/-compiled
-app/feditor/dev
 test
 app/images/
 server/conf.js
+app/feditor/settings/autosaveService.es6.js

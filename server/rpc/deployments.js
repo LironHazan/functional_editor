@@ -18,31 +18,24 @@ router.post('/deploy/', (req, res) => {
         formData: { code: req.body.func }
     };
     request(options)
-        .then(function (result) {
+        .then( (result) => {
             res.send(result);
         })
-        .catch(function (err) {
+        .catch( (err)  => {
             res.send(err);
         });
 });
 
-router.post('/fetch/', (req, res) => {
-    // request set on PUT
-    //function composeCmd(funcName, lang){
-    //    return funcName+'?lang='+lang;
-    //}
+router.get('/list/', (req, res) => {
     const options = {
-        uri: conf.site + req.body.name,
-        method: 'GET',
-        qs: { lang: req.body.lang }
-       // formData: { code: req.body.func }
-        //'Content-Type': 'application/json'
+        uri: conf.site,
+        method: 'GET'
     };
     request(options)
-        .then(function (result) {
+        .then( (result) => {
             res.send(result);
         })
-        .catch(function (err) {
+        .catch( (err) => {
             res.send(err);
         });
 });
