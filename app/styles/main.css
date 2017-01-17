@@ -36,10 +36,22 @@ body {
   margin-top: -21px;
   opacity: 0.8;
 }
+ul
+{
+  list-style-type: none;
+}
 
 .fne-name{
-  padding: 10px ;
+  padding: 5px 10px 5px 15px;
+  cursor: pointer;
+  margin-left: -30px;
 }
+
+.fne-name:hover {
+  background-color: #8a8f94;
+  border-radius: 6px;
+}
+
 .nfe-modal{
   width:200px;
 }

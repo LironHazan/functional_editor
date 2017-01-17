@@ -13,6 +13,7 @@ angular.module('functional_editor')
       $rootScope.$on(Consts.events.newFunction, (event, fnObj) => {
           $scope.funcName = fnObj.name;
           $scope.funcObj = fnObj;
+          initListOfFunctions();
       });
 
       $scope.selectFunction = func => {

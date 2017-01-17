@@ -7,12 +7,8 @@ const conf = require('../conf').Conf();
 
 
 router.post('/deploy/', (req, res) => {
-    // request set on PUT
-    //function composeCmd(funcName, lang){
-    //    return funcName+'?lang='+lang;
-    //}
     const options = {
-        uri: conf.site + req.body.name,
+        uri: conf.site + '/' + req.body.name,
         method: 'PUT',
         qs: { lang: req.body.lang },
         formData: { code: req.body.func }

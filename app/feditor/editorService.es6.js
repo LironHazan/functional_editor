@@ -3,7 +3,7 @@
 angular.module('functional_editor')
     .service('editorService', function ($http, Consts, settingsService) {
 
-        const functions = [];
+        //const functions = [];
         const that = this;
         const _editor = ace.edit('functionalEditor');
 
@@ -12,9 +12,9 @@ angular.module('functional_editor')
             return re.test(fnText);
         };
 
-        this.save = function(funcObj){ // non arrow func since I'm using 'this' as editorService ...
-                functions.push(funcObj);
-        };
+        //this.save = function(funcObj){ // non arrow func since I'm using 'this' as editorService ...
+        //        functions.push(funcObj);
+        //};
 
         this.deploy = (name, data) => {
             return $http({

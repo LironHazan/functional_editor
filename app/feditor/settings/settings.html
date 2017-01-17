@@ -12,9 +12,9 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="nav navbar-nav navbar-left">
-                <button class="btn-default btn-actions" ng-click="newFunction(editor)"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true"></i></div></button>
-                <button class="btn-default" ng-disabled="funcObj" ng-click="deployFunction(funcObj, editor)"> <div class="fne-btn"> <i class="fa fa-play" aria-hidden="true"></i></div></button>
-                <button class="btn-default" ng-click="clearEditor(editor)"> <div class="fne-btn"> <i class="fa fa-trash-o" aria-hidden="true"></i></div></button>
+                <button class="btn-default btn-actions" ng-click="newFunction(editor, funcObj)"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true" title="New Function"></i></div></button>
+                <button class="btn-default" ng-disabled="!funcObj" ng-click="deployFunction(editor, funcObj)"> <div class="fne-btn"> <i class="fa fa-floppy-o" aria-hidden="true" title="Save to Faaspot"></i></div></button>
+                <button class="btn-default" ng-click="clearEditor(editor)"> <div class="fne-btn"> <i class="fa fa-trash-o" aria-hidden="true" title="Clear Editor"></i></div></button>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

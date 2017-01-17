@@ -32,7 +32,9 @@ angular.module('functional_editor')
 
 
             // buttons - todo: move to a new component
-            $scope.newFunction = (editor) => {
+            $scope.funcObj = functionInfoService.getFunction();
+
+            $scope.newFunction = (editor, funcObj) => {
                 const text = 'def main(args, context)';
                 editorService.initFunction(editor, text);
                 const modalInstance = $uibModal.open({
@@ -41,11 +43,9 @@ angular.module('functional_editor')
                 });
 
                 modalInstance.result.then(name => {
-                    const funcObj = functionInfoService.getFunction();
                     functionInfoService.setFunctionName(funcObj, name);
                     functionInfoService.setFuncObject(funcObj);
                     functionInfoService.setFunctionText(funcObj, editorService.getEditedText());
-                    editorService.save(funcObj);
                     $rootScope.$emit(Consts.events.newFunction, funcObj);
                     editor.focus();
                 },  (e) => {
@@ -53,7 +53,8 @@ angular.module('functional_editor')
                 });
             };
 
-            $scope.deployFunction = (fn , editor) => {
+            $scope.deployFunction = (editor, funcObj) => {
+                const fn = funcObj;
                 let value = editor.getValue();
                 value = value.trim();
                 if(editorService.validateSyntax(value)){
@@ -62,6 +63,7 @@ angular.module('functional_editor')
                     console.log(value);
                     $scope.functions = editorService.getListOfFunctions();
                     editorService.deploy(fn.name, fn.text).then( result => {
+                        $rootScope.$emit(Consts.events.newFunction, fn);
                         swal({title:"Niceeeee!" ,text: "The function was deployed" ,timer: 2000,
                             showConfirmButton: false, type:"success"});
                         $log.info(result);
