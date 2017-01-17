@@ -13,7 +13,14 @@ body {
 .fne-dropdown{
   padding: 10px;
 }
-
+.file-name{
+  padding: 15px;
+  font-size: 18px;
+  font-family: monospace;
+}
+.btn-actions{
+  margin-top: 14px;
+}
 .btn-default{
   border: 2px solid #a1a1a1;
   border-radius: 2px;
@@ -21,10 +28,30 @@ body {
 .fne-btn{
   text-transform: uppercase;
 }
+.fne-list-container{
+  width: 191px;
+  background-color: lightgray;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: -21px;
+  opacity: 0.8;
+}
+ul
+{
+  list-style-type: none;
+}
 
 .fne-name{
-  padding: 10px ;
+  padding: 5px 10px 5px 15px;
+  cursor: pointer;
+  margin-left: -30px;
 }
+
+.fne-name:hover {
+  background-color: #8a8f94;
+  border-radius: 6px;
+}
+
 .nfe-modal{
   width:200px;
 }
