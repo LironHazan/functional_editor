@@ -1,4 +1,4 @@
-#Functional Editor
+#FunkyEditor - functional editor 
 
 In order to run the project you must have nodejs and npm installed,
 from the root of the project run:
