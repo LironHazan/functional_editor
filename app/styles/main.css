@@ -1,10 +1,15 @@
 body {
   padding: 0;
+  background-color: #F5F5F5;
 }
 
 .modal-content {
-  width: 256px;
-  margin: 1px 0 0 -65px;
+  width: 260px;
+  height: auto;
+}
+.lang-selector{
+  margin-top: 10px;
+  width: 100px;
 }
 .fne-menu{
   padding-left: 15px;
@@ -28,28 +33,51 @@ body {
 .fne-btn{
   text-transform: uppercase;
 }
-.fne-list-container{
-  width: 191px;
-  background-color: lightgray;
-  border-radius: 6px;
-  padding: 10px;
-  margin-top: -21px;
+.fa-times-circle{
+  cursor: pointer;
   opacity: 0.8;
+  padding-top: 8px;
+  margin-right: 5px;
+  display: none;
+}
+.fa-times-circle:hover {
+  color: darkred;
+}
+.fne-list-container{
+  background-color: #FFFFFF;
+  border-radius: 6px;
 }
 ul
 {
   list-style-type: none;
 }
-
+.fne-remove{
+  padding-top: 5px;
+}
+.fne-workspace{
+  display: inline-flex;
+}
 .fne-name{
   padding: 5px 10px 5px 15px;
   cursor: pointer;
   margin-left: -30px;
+  color: #2C4A67;
 }
 
-.fne-name:hover {
-  background-color: #8a8f94;
+.fne-container{
+  display: inline-flex;
+  justify-content: space-between;
+  min-width: 174px;
+  margin-left: -40px;
+  padding-left: 33px;
+}
+.fne-container:hover {
+  background-color: #EDF1F7;
   border-radius: 6px;
+}
+.fne-container:hover .fa-times-circle {
+  display: inline;
+
 }
 
 .nfe-modal{
@@ -57,11 +85,16 @@ ul
 }
 .fne-modal-input{
   display: inline-flex;
-  height: 32px;
 }
-
+.checked_item{
+  background-color: #0d3349;
+  color: whitesmoke;
+  margin-left: -39px;
+  padding-left: 16px;
+}
 #fne-modal-btn {
-  padding: 5px;
+  padding: 1px 20px 1px 20px;
+  margin-top: 10px;
 }
 #fne-modal-text-field{
   margin-right: 5px;
@@ -70,7 +103,6 @@ ul
 #fne-modal-title{
   text-transform: uppercase;
 }
-.ace_editor { height: 200px; }
 
 .header,
 .footer {
@@ -93,8 +125,14 @@ ul
 .container-narrow > hr {
   margin: 30px 0;
 }
-
-
+.ace_editor{
+  border: 1px solid #2C3E50;
+  margin-left: 34px;
+  top: -19px;
+  height: 600px;
+  overflow: scroll;
+  padding-left: 1000px;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {

@@ -36,6 +36,21 @@ router.get('/list/', (req, res) => {
         });
 });
 
+router.post('/delete/', (req, res) => {
+    const options = {
+        uri: conf.site + '/' + req.body.fname,
+        method: 'DELETE'
+    };
+    request(options)
+        .then( (result) => { {
+            console.log(result);
+            res.send(result); }
+        })
+        .catch( (err) => {
+            res.send(err);
+        });
+});
+
 
 
 module.exports = router;

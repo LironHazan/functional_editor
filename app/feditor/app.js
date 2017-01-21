@@ -3,6 +3,7 @@
 angular
   .module('functional_editor', [
     'ngAnimate',
+    'toastr',
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -10,7 +11,14 @@ angular
     'ngTouch',
     'ui.bootstrap'
   ])
-  .config(function ( $routeProvider) {
+  .config(function ( $routeProvider, toastrConfig) {
+      angular.extend(toastrConfig, {
+          closeButton: true,
+          extendedTimeOut: 3000,
+          tapToDismiss: false,
+          positionClass: 'toast-bottom-right'
+      });
+
       $routeProvider
       .when('/', {
         templateUrl: 'feditor/main.html',
@@ -22,4 +30,7 @@ angular
       //}).otherwise({
       //  redirectTo: '/'
       //});
-  });
+  }).constant('_',
+    window._
+);
+

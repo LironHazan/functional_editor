@@ -3,7 +3,9 @@ angular.module('functional_editor')
     .component('settingsComponent', {
         templateUrl: 'feditor/settings/settings.html',
         bindings: {},
-        controller: function ($scope, $rootScope, settingsService, editorService, $uibModal, $log, functionInfoService, Consts) {
+        controller: function ($scope, $rootScope, settingsService, editorService,
+            $uibModal, $log, toastr, functionInfoService, Consts) {
+
             const $ctrl = this;
             const options = settingsService.getPrefs();
             $scope.editor = editorService.getEditor(options);
@@ -12,24 +14,15 @@ angular.module('functional_editor')
             $scope.themeList = [ 'chrome', 'clouds', 'twilight', 'monokai',
                 'cobalt', 'dawn', 'TextMate', 'eclipse'
             ];
-            $scope.langList = ['javascript', 'python', 'ruby'];
 
             $scope.setTheme = (theme) => {
                 options.theme = 'ace/theme/' + theme;
                 applySelection(options);
             };
 
-            $scope.setLangMode = (lang) => {
-                options.lang = 'ace/mode/' + lang;
-                applySelection(options);
-            };
-
             function applySelection (options){
                 settingsService.setPrefs(options, $scope);
             }
-
-
-
 
             // buttons - todo: move to a new component
             $scope.funcObj = functionInfoService.getFunction();
@@ -47,6 +40,7 @@ angular.module('functional_editor')
                     functionInfoService.setFuncObject(funcObj);
                     functionInfoService.setFunctionText(funcObj, editorService.getEditedText());
                     $rootScope.$emit(Consts.events.newFunction, funcObj);
+                    $scope.deployFunction(editor, funcObj); // deploy the basic function
                     editor.focus();
                 },  (e) => {
                     $log.info(e);
@@ -59,20 +53,18 @@ angular.module('functional_editor')
                 value = value.trim();
                 if(editorService.validateSyntax(value)){
                     fn.text = value;
-                    // editorService.save(fn);
                     console.log(value);
                     $scope.functions = editorService.getListOfFunctions();
                     editorService.deploy(fn.name, fn.text).then( result => {
                         $rootScope.$emit(Consts.events.newFunction, fn);
-                        swal({title:"Niceeeee!" ,text: "The function was deployed" ,timer: 2000,
-                            showConfirmButton: false, type:"success"});
+                        toastr.success( 'Function was deployed!');
                         $log.info(result);
                     }, err => {
                         $log.error(err);
                     });
                 }
                 else {
-                    swal({ title: "Say Whatt?!", text: "Invalid function syntax", type:"error"})
+                    toastr.error( 'Invalid function syntax');
                 }
             };
 

@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="nav navbar-nav navbar-left">
                 <button class="btn-default btn-actions" ng-click="newFunction(editor, funcObj)"> <div class="fne-btn"> <i class="fa fa-plus" aria-hidden="true" title="New Function"></i></div></button>
-                <button class="btn-default" ng-disabled="!funcObj" ng-click="deployFunction(editor, funcObj)"> <div class="fne-btn"> <i class="fa fa-floppy-o" aria-hidden="true" title="Save to Faaspot"></i></div></button>
+                <button class="btn-default" ng-disabled="!funcObj"> <div class="fne-btn" ng-click="deployFunction(editor, funcObj)" > <i class="fa fa-floppy-o" aria-hidden="true" title="Save to Faaspot"></i></div></button>
                 <button class="btn-default" ng-click="clearEditor(editor)"> <div class="fne-btn"> <i class="fa fa-trash-o" aria-hidden="true" title="Clear Editor"></i></div></button>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
@@ -21,13 +21,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Theme <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li ng-repeat="theme in themeList"><a ng-click="setTheme(theme)">{{theme}}</a></li></ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li ng-repeat="lang in langList"><a ng-click="setLangMode(lang)">{{lang}}</a></li>
-                        </ul>
-                    </li>
+                            </li>
                 </ul>
             </div>
         </div>

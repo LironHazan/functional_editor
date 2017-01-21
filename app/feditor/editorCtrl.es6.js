@@ -24,6 +24,15 @@ angular.module('functional_editor')
           editor.focus();
       };
 
+      $scope.deleteFunction = func => {
+          editorService.delete(func).then(() => {
+              initListOfFunctions();
+              editor.setValue('');
+              $scope.funcName = '';
+              editor.focus();
+          });
+      };
+
       function initListOfFunctions(){
           editorService.getListOfFunctions().then((result)=>{
               result.data.forEach( item => {

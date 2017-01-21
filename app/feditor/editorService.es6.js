@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('functional_editor')
-    .service('editorService', function ($http, Consts, settingsService) {
+    .service('editorService', function ($http, Consts, settingsService,  _) {
 
         //const functions = [];
         const that = this;
@@ -11,10 +11,6 @@ angular.module('functional_editor')
             const re = /^((def|function).([a-z1-9A-Z_]*|[a-z1-9A-Z_]*\s)(\((args)\,.(context)\)|(\((args,context))\)))/;
             return re.test(fnText);
         };
-
-        //this.save = function(funcObj){ // non arrow func since I'm using 'this' as editorService ...
-        //        functions.push(funcObj);
-        //};
 
         this.deploy = (name, data) => {
             return $http({
@@ -26,6 +22,14 @@ angular.module('functional_editor')
 
         this.getListOfFunctions = () => {
             return $http.get('/api/deployments/list');
+        };
+
+        this.delete = (fname) => {
+            return $http({
+                method: 'POST',
+                url: '/api/deployments/delete',
+                data: {fname: fname.name}
+            });
         };
 
         this.initFunction = (editor, text) => {
@@ -52,6 +56,14 @@ angular.module('functional_editor')
             return value;
         };
 
-        this.getFileExtention = () => _.find(Consts.extentions, item => item[settingsService.getSelectedLang()]);
+        this.getFileExtention = () => {
+          _.find(Consts.extentions,
+            item => {
+            let uri = settingsService.getSelectedLang();
+            uri = uri.slice(uri.lastIndexOf('/'));
+            uri = uri.slice(uri.indexOf('/')+1);
+            return item[uri];
+        });
+      };
 
 });

@@ -3,8 +3,9 @@
         <div id="modal-custom-input">
             <div class="fne-modal-input">
                 <input id="fne-modal-text-field" type="text" ng-model="$ctrl.item.name" class="input-line" placeholder=" Enter a function name" required/>
-                <button id="fne-modal-btn" class="btn btn-primary" ng-click="$ctrl.ok()" ng-disabled="!$ctrl.item.name">OK</button>
             </div>
         </div>
+        <select class="lang-selector" ng-options="lang for lang in langList" ng-model="lang"></select>
+        <button id="fne-modal-btn" class="btn btn-primary" ng-click="$ctrl.ok()" ng-disabled="!$ctrl.item.name">Save</button>
     </div>
 </div>
